@@ -1,4 +1,4 @@
-## 🤷🏻‍♂️ What's Coding Cata
+## 🤷🏻‍♂️ What's Coding Kata
 
 A code kata is a software development exercise in which the focus is not on solving a task or problem, but on learning new skills and developing successful routines. For each code kata, several solutions have to be found in order to learn from mistakes, gain experience and develop even better solutions.
 
@@ -20,15 +20,15 @@ If you want to join or participate in the Coding dojo only join to slack channel
 ## 🧙‍♂️ How to start
 
 - Clone the coding-dojo repository.
-- Go to the folder of the current work in progress cata.
-- Decide which language you prefer to develop the cata.
+- Go to the folder of the current work in progress Kata.
+- Decide which language you prefer to develop the Kata.
 - If not exist, create a folder with the name of the language. JavaScript, Kotlin, Haskell...
 - If is already code in there, put your name and work in there your solution
-- Read carefully the details of the cata. Normally you will have recomendations and test cases.
+- Read carefully the details of the Kata. Normally you will have recommendations and test cases.
 - And start developing you approach.
 
 Is not needed to have it perfect. **Done is better than perfect**
 
-Finallay every Friday at 14.00 we have a sort meeting to exchange point of views, share approaches and learn.
+Finally every Friday at 14.00 we have a sort meeting to exchange point of views, share approaches and learn.
 
-Enjoy the proces and **don't be shy**
+Enjoy the process and **don't be shy**
