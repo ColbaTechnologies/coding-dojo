@@ -1,1 +1,5 @@
 .idea/.idea.coding-dojo.dir/.idea
+GildedRoseRefactoringKata/fsharp-core/.idea
+GildedRoseRefactoringKata/fsharp-core/GildedRose/obj
+GildedRoseRefactoringKata/fsharp-core/GildedRose.ApprovalTests/obj
+GildedRoseRefactoringKata/fsharp-core/GildedRose.UnitTests/obj
