@@ -2,9 +2,8 @@
 
 open System.Collections.Generic
 
-type Item = { Name: string; SellIn: int; Quality: int }
 
-type GildedRose(items:IList<Item>) =
+type GildedRose(items:IList<Types.Item>) =
     let Items = items
     let decreaseMultiplier name =
         if name = "Conjured Mana Cake" then
@@ -13,35 +12,12 @@ type GildedRose(items:IList<Item>) =
         1
     member this.UpdateQuality() =
         for i = 0 to Items.Count - 1 do
-            let multiplier = decreaseMultiplier Items.[i].Name
+            let current = Items[i]
+            let calculator = Util.calculator current
+            let sellIn, quality = calculator.Calculate current
 
-            if Items.[i].Name <> "Aged Brie" && Items.[i].Name <> "Backstage passes to a TAFKAL80ETC concert" then
-                if Items.[i].Quality > 0 then
-                    if Items.[i].Name <> "Sulfuras, Hand of Ragnaros" then
-                        Items.[i] <- { Items.[i] with Quality = (Items.[i].Quality - 1 * multiplier) } 
-            else
-               if Items.[i].Quality < 50 then
-                    Items.[i] <- { Items.[i] with Quality = (Items.[i].Quality + 1) } 
-                    if Items.[i].Name = "Backstage passes to a TAFKAL80ETC concert" then
-                        if Items.[i].SellIn < 11 then
-                            if Items.[i].Quality < 50 then
-                                Items.[i] <- { Items.[i] with Quality = (Items.[i].Quality + 1) } 
-                        if Items.[i].SellIn < 6 then
-                            if Items.[i].Quality < 50 then
-                                Items.[i] <- { Items.[i] with Quality = (Items.[i].Quality + 1) } 
-            if Items.[i].Name <> "Sulfuras, Hand of Ragnaros" then                 
-                Items.[i] <- { Items.[i] with SellIn  = (Items.[i].SellIn - 1) } 
-            if Items.[i].SellIn < 0 then
-                if Items.[i].Name <> "Aged Brie" then
-                    if Items.[i].Name <> "Backstage passes to a TAFKAL80ETC concert" then
-                        if Items.[i].Quality > 0 then
-                            if Items.[i].Name <> "Sulfuras, Hand of Ragnaros" then
-                                Items.[i] <- { Items.[i] with Quality   = (Items.[i].Quality  - 1) } 
-                    else
-                        Items.[i] <- { Items.[i] with Quality   = (Items.[i].Quality  - Items.[i].Quality) } 
-                else
-                    if Items.[i].Quality < 50 then
-                        Items.[i] <- { Items.[i] with Quality   = (Items.[i].Quality + 1) }  
+            Items[i] <- {current with SellIn = sellIn}
+            Items[i] <- {current with Quality =  quality}
         ()
 
 
@@ -49,7 +25,7 @@ module Program =
     [<EntryPoint>]
     let main argv =
         printfn "OMGHAI!"
-        let Items = new List<Item>()
+        let Items = new List<Types.Item>()
         Items.Add({Name = "+5 Dexterity Vest"; SellIn = 10; Quality = 20})
         Items.Add({Name = "Aged Brie"; SellIn = 2; Quality = 0})
         Items.Add({Name = "Elixir of the Mongoose"; SellIn = 5; Quality = 7})
