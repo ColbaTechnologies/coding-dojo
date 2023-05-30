@@ -18,7 +18,13 @@ module GildedRose.Util
         if (name.StartsWith "Sulfuras") then
             Some Types.Sulfuras
         else        
-            None    
+            None
+            
+    let (|Conjured|_|) (name : string) =
+        if (name.StartsWith "Conjured") then
+            Some Types.Conjured
+        else        
+            None  
     
     let group item =
         let g =
@@ -26,6 +32,7 @@ module GildedRose.Util
             | Aged n -> Aged
             | Backstage n -> Backstage
             | Sulfuras n -> Sulfuras
+            | Conjured n -> Conjured
             | _ -> Other
         g
         

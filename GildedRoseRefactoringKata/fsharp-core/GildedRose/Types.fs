@@ -38,7 +38,12 @@ module GildedRose.Types
     type SulfurasCalculator private () =
         static member val Instance = SulfurasCalculator ()
         interface ICalculator with
-            member this.Calculate item = failwith "todo"            
+            member this.Calculate item = failwith "todo"
+            
+    type ConjuredCalculator private () =
+        static member val Instance = ConjuredCalculator ()
+        interface ICalculator with
+            member this.Calculate item = failwith "todo"  
             
     type OtherCalculator private () =
         static member val Instance = OtherCalculator ()
@@ -49,5 +54,6 @@ module GildedRose.Types
         | Aged
         | Backstage
         | Sulfuras
+        | Conjured
         | Other        
 
