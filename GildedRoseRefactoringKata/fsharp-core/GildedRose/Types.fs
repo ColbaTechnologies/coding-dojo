@@ -38,7 +38,7 @@ module GildedRose.Types
     type SulfurasCalculator private () =
         static member val Instance = SulfurasCalculator ()
         interface ICalculator with
-            member this.Calculate item = failwith "todo"
+            member this.Calculate item = (item.SellIn, item.Quality)
             
     type ConjuredCalculator private () =
         static member val Instance = ConjuredCalculator ()
