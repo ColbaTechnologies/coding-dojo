@@ -54,7 +54,15 @@ module GildedRose.Types
     type ConjuredCalculator private () =
         static member val Instance = ConjuredCalculator ()
         interface ICalculator with
-            member this.Calculate item = failwith "todo"  
+                member this.Calculate item =
+                    let quality =
+                        match item.Quality with
+                        | q when q > 1 -> item.Quality - 2
+                        | q when q = 1 -> item.Quality - 1
+                        | _ -> item.Quality
+                        
+                    let sellIn = item.SellIn - 1
+                    (sellIn, quality)
             
     type OtherCalculator private () =
         static member val Instance = OtherCalculator ()
