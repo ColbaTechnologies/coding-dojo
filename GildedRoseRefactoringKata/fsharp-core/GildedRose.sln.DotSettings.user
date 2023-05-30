@@ -1,0 +1,7 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=069c009c_002Dab16_002D45bf_002D9273_002De4d804b640e4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Thirty day report is correct" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::C2C723A1-31CF-445C-BC8B-3CFC8620C8EB::net6.0::GildedRose.ApprovalTests.Thirty day report is correct&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::C2C723A1-31CF-445C-BC8B-3CFC8620C8EB::net6.0::GildedRose.ApprovalTests.Thirty day report with conjured item is correct&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

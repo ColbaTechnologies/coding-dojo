@@ -17,3 +17,16 @@ let ``Thirty day report is correct`` () =
     let actual = fakeoutput.ToString()
 
     Assert.Equal(expected, actual)
+    
+[<Fact>]
+let ``Thirty day report with conjured item is correct`` () =
+    let expected = File.ReadAllText "GildedRoseTest.ApprovalTest.ThirtyDays.received.Conjured.txt"
+
+    let fakeoutput = new StringBuilder()
+    Console.SetOut(new StringWriter(fakeoutput))
+    Console.SetIn(new StringReader("a\n"))
+
+    GildedRose.Program.main [||] |> ignore
+    let actual = fakeoutput.ToString()
+
+    Assert.Equal(expected, actual)

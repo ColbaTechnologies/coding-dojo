@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="GildedRoseTest.ApprovalTest.ThirtyDays.received.Conjured.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="GildedRoseTest.ApprovalTest.ThirtyDays.received.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
