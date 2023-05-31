@@ -39,8 +39,6 @@ module GildedRose.Types
                     let quality =
                         match (sellIn, item.Quality) with
                         | s, q when q < 50 && s > 10 -> item.Quality + 1
-                        | s, q when q < 50 && s > 5 -> item.Quality + 2
-                        | s, q when q < 50 && s >= 0 -> item.Quality + 3
                         | s, q when  s < 0 -> 0
                         | _ -> item.Quality
                         
