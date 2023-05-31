@@ -12,12 +12,11 @@ type GildedRose(items:IList<Types.Item>) =
         1
     member this.UpdateQuality() =
         for i = 0 to Items.Count - 1 do
-            let current = Items[i]
-            let calculator = Util.calculator current
-            let sellIn, quality = calculator.Calculate current
+            let calculator = Util.calculator Items[i]
+            let sellIn, quality = calculator.Calculate Items[i]
 
-            Items[i] <- {current with SellIn = sellIn}
-            Items[i] <- {current with Quality =  quality}
+            Items[i] <- {Items[i] with SellIn = sellIn}
+            Items[i] <- {Items[i] with Quality =  quality}
         ()
 
 
