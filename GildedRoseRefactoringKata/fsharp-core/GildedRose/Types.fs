@@ -76,12 +76,17 @@ module GildedRose.Types
         static member val Instance = OtherCalculator ()
         interface ICalculator with
             member this.Calculate item =
+                    let sellIn = item.SellIn - 1
                     let quality =
                         match item.Quality with
                         | q when q > 0 -> item.Quality - 1
                         | _ -> item.Quality
                         
-                    let sellIn = item.SellIn - 1
+                    let quality =
+                        match (sellIn, quality) with
+                        | s, q when s < 0 && q > 0 -> quality - 1
+                        | _ -> quality
+
                     (sellIn, quality)
             
     type Groups =
