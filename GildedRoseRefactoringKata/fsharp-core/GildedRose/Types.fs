@@ -44,6 +44,16 @@ module GildedRose.Types
                         | s, q when  s < 0 -> 0
                         | _ -> item.Quality
                         
+                    let quality =
+                        match (sellIn, quality) with
+                        | s, q when q < 50 && s <= 10 && s > 5 -> quality + 1
+                        | _ -> quality
+                        
+                    let quality =
+                        match (sellIn, quality) with
+                        | s, q when q < 50 && s <= 5 && s >= 0 -> quality + 1
+                        | _ -> quality
+                        
                     (sellIn, quality)
 
     type SulfurasCalculator private () =
