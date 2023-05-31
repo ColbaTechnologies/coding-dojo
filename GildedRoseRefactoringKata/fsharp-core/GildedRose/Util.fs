@@ -42,5 +42,6 @@ module GildedRose.Util
             | Groups.Aged -> AgedCalculator.Instance :> ICalculator
             | Groups.Backstage -> BackstageCalculator.Instance
             | Groups.Sulfuras -> SulfurasCalculator.Instance
+            | Groups.Conjured -> ConjuredCalculator.Instance
             | _ -> OtherCalculator.Instance
         c    
