@@ -2,9 +2,14 @@ namespace BankOCR;
 
 public class FileReadingService
 {
+    private readonly string _fileName;
+    public FileReadingService(string name)
+    {
+        _fileName = name;
+    }
     public string[] ReadLinesFromFile(int charLimit1)
     {
-        var path = Directory.GetCurrentDirectory() + "/MachineInput.txt";
+        var path = string.Concat(Directory.GetCurrentDirectory(), "/", _fileName);
         var inputFromFile = File.ReadLines(path);
 
         var strings = inputFromFile as string[] ?? inputFromFile.ToArray();
