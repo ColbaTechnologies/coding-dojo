@@ -38,6 +38,7 @@ public class NumberFinder
         {
             var points = _numbersReference.Select(refNr =>
             {
+                // TODO: create distance calculator 
                 if (refNr.Ref == possibleNumber) return refNr.Value;
                 return -1;
             });
