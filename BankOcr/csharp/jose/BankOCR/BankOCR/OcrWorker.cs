@@ -3,14 +3,14 @@ namespace BankOCR;
 public class OcrWorker
 {
     private readonly FileReadingService _fileService;
-    private readonly Converter _converter;
     private readonly NumberFinder _finder;
+    private readonly AccountFixer _fixer;
 
     public OcrWorker(string name = "MachineInput.txt")
     {
         _fileService = new FileReadingService(name);
-        _converter = new Converter();
         _finder = new NumberFinder();
+        _fixer = new AccountFixer();
     }
     
     public IEnumerable<Account> ReadAccountNumbers()
@@ -23,6 +23,10 @@ public class OcrWorker
         {
             account.NumberBlocks = Converter.ConvertIntoNumbers(account.Lines, charLimit);
             SetFinalNumberWithErrorMessages(account);
+            if (account.FinalNumber.Length > 9)
+            {
+                account.FinalNumber = _fixer.TryToFixAccountNr(account);
+            }
         }
 
         return accounts;
