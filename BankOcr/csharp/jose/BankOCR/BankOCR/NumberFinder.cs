@@ -2,14 +2,13 @@ namespace BankOCR;
 
 public class NrRef
 {
-
     public NrRef(int value, string reference)
     {
         Value = value;
         Ref = reference;
     }
-    public string Ref { get; set; }
-    public int Value { get; set; }
+    public string Ref { get; }
+    public int Value { get; }
 }
 
 public class NumberFinder
@@ -31,7 +30,7 @@ public class NumberFinder
         _numbersReference = new[] {zero, one, two, three, four, five, six, seven, eight, nine};
     }
 
-    public string FindNumber(string[] strings)
+    public string FindNumber(IEnumerable<string> strings)
     {
         var s = "";
         foreach (var possibleNumber in strings)

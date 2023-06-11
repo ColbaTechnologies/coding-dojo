@@ -1,6 +1,4 @@
-using BankOCR;
-
-namespace BanckOCR.Tests;
+namespace BankOCR.Tests;
 
 public class UseCases
 {

@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankOCR", "BankOCR\BankOCR.csproj", "{120C0455-FBDF-4BFE-8B4D-34CBCDBF805F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanckOCR.Tests", "BanckOCR.Tests\BanckOCR.Tests.csproj", "{695B4FBB-2039-47E7-BD56-D70EBEAC8DAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankOCR.Tests", "BankOCR.Tests\BankOCR.Tests.csproj", "{695B4FBB-2039-47E7-BD56-D70EBEAC8DAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
