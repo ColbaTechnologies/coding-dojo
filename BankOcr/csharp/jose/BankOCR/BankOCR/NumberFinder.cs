@@ -41,9 +41,16 @@ public class NumberFinder
                 if (refNr.Ref == possibleNumber) return refNr.Value;
                 return -1;
             });
-
-            var whoGetsThePoint = points.First(x => x != -1).ToString();
-            s += whoGetsThePoint;
+            
+            var whoCanGetThePoint = points.Where(x => x != -1).ToList();
+            if (whoCanGetThePoint.Count is 0)
+            {
+                s += "?";
+            }
+            else
+            {
+                s += whoCanGetThePoint.First();
+            }
         }
 
         return s;
