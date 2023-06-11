@@ -29,7 +29,10 @@
 
     <ItemGroup>
       <None Remove="TestCases1\useCase1.txt" />
-      <Content Include="TestCases1\useCase1.txt">
+      <Content Include="TestCases\useCase1.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+        <Content Include="TestCases\useCase2.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
