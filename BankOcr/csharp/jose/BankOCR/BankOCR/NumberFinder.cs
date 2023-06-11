@@ -17,6 +17,7 @@ public class NumberFinder
     private readonly NrRef[] _numbersReference;
     public NumberFinder()
     {
+        var zero = new NrRef(0, " _ \n| |\n|_|\n");
         var one = new NrRef(1, "   \n  |\n  |\n");
         var two = new NrRef(2, " _ \n _|\n|_ \n");
         var three = new NrRef(3, " _ \n _|\n _|\n");
@@ -27,7 +28,7 @@ public class NumberFinder
         var eight = new NrRef(8, " _ \n|_|\n|_|\n");
         var nine = new NrRef(9, " _ \n|_|\n _|\n");
 
-        _numbersReference = new[] {one, two, three, four, five, six, seven, eight, nine};
+        _numbersReference = new[] {zero, one, two, three, four, five, six, seven, eight, nine};
     }
 
     public string FindNumber(string[] strings)
@@ -38,10 +39,10 @@ public class NumberFinder
             var points = _numbersReference.Select(refNr =>
             {
                 if (refNr.Ref == possibleNumber) return refNr.Value;
-                return 0;
+                return -1;
             });
 
-            var whoGetsThePoint = points.First(x => x != 0).ToString();
+            var whoGetsThePoint = points.First(x => x != -1).ToString();
             s += whoGetsThePoint;
         }
 
