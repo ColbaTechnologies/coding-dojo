@@ -2,24 +2,28 @@ namespace BankOCR;
 
 public class OcrWorker
 {
-    private readonly string _fileName;
+    private readonly FileReadingService _fileService;
+    private readonly Converter _converter;
+    private readonly NumberFinder _finder;
 
     public OcrWorker(string name = "MachineInput.txt")
     {
-        _fileName = name;
+        _fileService = new FileReadingService(name);
+        _converter = new Converter();
+        _finder = new NumberFinder();
     }
-    public string ReadAccountNumbers()
+    
+    public IEnumerable<Account> ReadAccountNumbers()
     {
         const int charLimit = 27;
+        var accountsFromFile = _fileService.ReadLinesFromFile(charLimit);
 
-        var fileService = new FileReadingService(_fileName);
-        var linesFromFile = fileService.ReadLinesFromFile(charLimit);
+        foreach (var account in accountsFromFile)
+        {
+            account.NumberBlocks = _converter.ConvertIntoNumbers(account.Lines, charLimit);
+            account.FinalNumber = _finder.FindNumber(account.NumberBlocks);
+        }
 
-        var converter = new Converter();
-        var numbersRead = converter.ConvertIntoNumbers(linesFromFile, charLimit);
-
-        var finder = new NumberFinder();
-        var s = finder.FindNumber(numbersRead);
-        return s;
+        return accountsFromFile;
     }
 }

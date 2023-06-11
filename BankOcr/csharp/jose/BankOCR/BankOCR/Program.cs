@@ -2,9 +2,12 @@
 using BankOCR;
 
 var worker = new OcrWorker();
-var decypheredNumber = worker.ReadAccountNumbers();
+var accounts = worker.ReadAccountNumbers();
 
-Console.WriteLine(decypheredNumber);
+foreach (var account in accounts)
+{
+    Console.WriteLine(account.FinalNumber);
+}
 
 
 

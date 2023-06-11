@@ -1,10 +1,10 @@
-using System.Security.Principal;
-
 namespace BankOCR;
 
-public class AccountNr
+public class Account
 {
-    public string[] Lines { get; set; }
+    public string[] Lines { get; set; } = new string[4];
+    public string[] NumberBlocks { get; set; } = new string[9];
+    public string FinalNumber { get; set; } = null!;
 }
 
 public class FileReadingService
@@ -14,7 +14,7 @@ public class FileReadingService
     {
         _fileName = name;
     }
-    public string[] ReadLinesFromFile(int charLimit1)
+    public IEnumerable<Account> ReadLinesFromFile(int charLimit)
     {
         var path = string.Concat(Directory.GetCurrentDirectory(), "/", _fileName);
         var inputFromFile = File.ReadLines(path);
@@ -22,32 +22,28 @@ public class FileReadingService
         var linesFromFile = inputFromFile as string[] ?? inputFromFile.ToArray();
         
         // TODO: extract this to a function
-        var howManyAccounts = linesFromFile.Length/4;
-        var accounts = new List<AccountNr>();
+        var accounts = SeparateIntoAccounts(linesFromFile, charLimit);
+
+        return accounts;
+    }
+    private static IEnumerable<Account> SeparateIntoAccounts(IReadOnlyList<string> linesFromFile, int charLimit)
+    {
+        var howManyAccounts = linesFromFile.Count / 4;
+        var accounts = new List<Account>();
         for (int i = 0; i < howManyAccounts; i++)
         {
-            var currentAccount = new AccountNr
+            var currentAccount = new Account
             {
                 Lines = new[]
                 {
-                    linesFromFile[4 * i],
-                    linesFromFile[4 * i + 1],
-                    linesFromFile[4 * i + 2],
-                    linesFromFile[4 * i + 3]
+                    linesFromFile[4 * i][..charLimit],
+                    linesFromFile[4 * i + 1][..charLimit],
+                    linesFromFile[4 * i + 2][..charLimit],
                 }
             };
             accounts.Add(currentAccount);
         }
-        
-        // TODO: cleanup extra spaces, trim or something like that
-        
-        
-        if (linesFromFile.Any(x => x.Length != charLimit1))
-        {
-            throw new InvalidDataException();
-        }
 
-        // TODO: return accounts, not this
-        return linesFromFile;
+        return accounts;
     }
 }
