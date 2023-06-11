@@ -15,6 +15,7 @@ public class UseCase1
         // Act
         var numbers = worker.ReadAccountNumbers();
         
+        // TODO: have this test actually check all numbers, not only the first one
         // Assert
         Assert.Equal("000000000", numbers);
     }
