@@ -9,8 +9,9 @@ var linesFromFile = fileService.ReadLinesFromFile(charLimit);
 var converter = new Converter();
 var numbersRead = converter.ConvertIntoNumbers(linesFromFile, charLimit);
 
+var finder = new NumberFinder();
+var decypheredNumber = finder.FindNumber(numbersRead);
 
-foreach (var line in numbersRead)
-{
-    Console.WriteLine(line);
-}
+Console.WriteLine(decypheredNumber);
+
+
