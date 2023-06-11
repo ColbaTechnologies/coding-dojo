@@ -18,12 +18,26 @@ public class OcrWorker
         const int charLimit = 27;
         var accountsFromFile = _fileService.ReadLinesFromFile(charLimit);
 
-        foreach (var account in accountsFromFile)
+        var accounts = accountsFromFile as Account[] ?? accountsFromFile.ToArray();
+        foreach (var account in accounts)
         {
-            account.NumberBlocks = _converter.ConvertIntoNumbers(account.Lines, charLimit);
-            account.FinalNumber = _finder.FindNumber(account.NumberBlocks);
+            account.NumberBlocks = Converter.ConvertIntoNumbers(account.Lines, charLimit);
+            SetFinalNumberWithErrorMessages(account);
         }
 
-        return accountsFromFile;
+        return accounts;
+    }
+    
+    private void SetFinalNumberWithErrorMessages(Account account)
+    {
+        account.FinalNumber = _finder.FindNumber(account.NumberBlocks);
+        if (account.FinalNumber.Contains('?'))
+        {
+            account.FinalNumber += " ILL";
+        }
+        else if (!account.ValidateNumber())
+        {
+            account.FinalNumber += " ERR";
+        }
     }
 }

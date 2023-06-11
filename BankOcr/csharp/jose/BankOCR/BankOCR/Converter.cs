@@ -2,7 +2,7 @@ namespace BankOCR;
 
 public class Converter
 {
-    public string[] ConvertIntoNumbers(string[] accountLines, int i1)
+    public static string[] ConvertIntoNumbers(IEnumerable<string> accountLines, int i1)
     {
         var numbersRead = new string[9];
         foreach (var line in accountLines)
