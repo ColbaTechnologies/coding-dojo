@@ -1,15 +1,6 @@
 namespace BankOCR;
 
-public class NrRef
-{
-    public NrRef(int value, string reference)
-    {
-        Value = value;
-        Ref = reference;
-    }
-    public string Ref { get; }
-    public int Value { get; }
-}
+internal record NrRef(int Value, string Ref);
 
 public class NumberFinder
 {

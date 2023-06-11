@@ -39,7 +39,7 @@ public class OcrWorker
         {
             account.FinalNumber += " ILL";
         }
-        else if (!account.ValidateNumber())
+        else if (!account.ValidateChecksum())
         {
             account.FinalNumber += " ERR";
         }
